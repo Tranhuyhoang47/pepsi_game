@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, TextInput, Button, Alert} from 'react-native';
 import SignUp from './Sign_up';
-import CheckBox from '@react-native-community/checkbox';
 
- const SignIn = () => {
+const SignIn: React.FC = (props: any) => {
   const [text, onChangeText] = React.useState('');
-  const [check1, setCheck1] = useState(false);
+  const {navigation} = props;
   return (
     <View>
       <View style={styles.container}>
@@ -23,17 +22,6 @@ import CheckBox from '@react-native-community/checkbox';
         placeholder="Nhập số điện thoại"
       />
       
-          <CheckBox 
-            style={styles.ck}
-            disabled={false}
-            value={check1}
-            onValueChange={(newValue) => setCheck1(newValue)}
-          />
-          <View style={styles.tx6}>
-            <Text>Tôi đã đọc và đồng ý với Pepsi tết</Text>
-
-            <Text></Text>
-          </View>
       <Text style={styles.tx5}>Hoặc</Text>
       <View style={styles.Btn1}>
         <Button
@@ -43,7 +31,10 @@ import CheckBox from '@react-native-community/checkbox';
         />
       </View>
       <View style={styles.Btn2}>
-        <Button title="Đăng ký"></Button>
+        <Button
+          title="Đăng ký" 
+          onPress={() => navigation.navigate('Sign_up')}
+        />
       </View>
     </View>
   );
@@ -112,16 +103,6 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     lineHeight: 14,
   },
-  tx6: {
-    width: 288,
-    height: 18,
-    left: 60,
-    top: 340,
-    fontSize: 12,
-    fontWeight: 'normal',
-    fontStyle: 'normal',
-    lineHeight: 14,
-  },
   txIp: {
     position: 'absolute',
     width: 340,
@@ -148,10 +129,4 @@ const styles = StyleSheet.create({
     left: 55,
     top: 580,
   },
-  ck: {
-    position:'absolute',
-    left:22.6,
-    right:'28.12%',
-    top:360,
-  }
 });
