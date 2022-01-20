@@ -1,0 +1,14 @@
+export const THREECANONE = require('./threecanone.png');
+export const HEAD = require('./head.png');
+export const CLOSE_BUTTON = require('./redclosebutton.png');
+export const DOUBLE_ARROW_UP = require('./doublearrowup.png');
+export const CRY_FACE = require('./cryface.png');
+export const SCREEN_MAIN = require('./screenmain.png');
+export const SCREEN_GAME = require('./screengame.png');
+export const SCREEN_CONGRATULATION = require('./screencongratulation.png');
+export const SCREEN_SCAN = require('./screenscan.png');
+export const SCREEN_SIGN = require('./screensign.png');
+export const BUTTON_RED = require('./defaultredbutton.png');
+export const BUTTON_WHITE = require('./defaultwhitebutton.png');
+export const BUTTON_INACTIVE = require('./defaultinactivebutton.png');
+export const BUTTON_PLAY_NOW = require('./buttonplaynow.png');

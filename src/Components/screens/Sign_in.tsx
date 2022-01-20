@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, Button, Alert} from 'react-native';
-import SignUp from './Sign_up';
-
+import {View, Text, StyleSheet, TextInput, Button, Alert, ImageBackground,StatusBar} from 'react-native';
+import {BUTTON_WHITE, SCREEN_SIGN, BUTTON_INACTIVE} from '../../../src/assets/images';
+import ClickButton from '../navigations/Button/clickbutton';
 const SignIn: React.FC = (props: any) => {
   const [text, onChangeText] = React.useState('');
   const {navigation} = props;
   return (
-    <View>
+    <ImageBackground
+           source={SCREEN_SIGN}
+           resizeMode="cover"
+           style={styles.imgbg}
+           >
       <View style={styles.container}>
         <Text style={styles.tx1}>Hey, mừng bạn đến với thể lệ chương trình</Text>
         <Text style={styles.tx2}> Pepsi Tet</Text>
@@ -24,24 +28,37 @@ const SignIn: React.FC = (props: any) => {
       
       <Text style={styles.tx5}>Hoặc</Text>
       <View style={styles.Btn1}>
-        <Button
+        <ImageBackground
+          source={BUTTON_INACTIVE}
+        >
+        <ClickButton
+          inactiveStyle={styles.Btn1}
           title="Lấy mã OTP"
-          color="#B7B9C0"
           onPress={() => Alert.alert('Cannot press this one')}
         />
+        </ImageBackground>
       </View>
       <View style={styles.Btn2}>
-        <Button
-          title="Đăng ký" 
+        <ImageBackground
+          source={BUTTON_WHITE}
+          style={styles.Btn2}
+        >
+        <ClickButton
+          title="Đăng ký"
+          titleStyle={styles.titleSignUp}
           onPress={() => navigation.navigate('Sign_up')}
-        />
+                />
+        </ImageBackground>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 export default SignIn;
 
 const styles = StyleSheet.create({
+  imgbg: {
+    flex:1
+  },
   container: {
     backgroundColor: '#fff',
     justifyContent: 'center',
@@ -56,10 +73,10 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 16,
     lineHeight: 24,
-    color: '#C2C9D1',
+    color: '#fff',
   },
   tx2: {
-    color: '#000000',
+    color: '#fff',
     position: 'absolute',
     width: 163,
     height: 48,
@@ -77,7 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     lineHeight: 26,
     textAlign: 'center',
-    color: '#414141',
+    color: '#fff',
   },
   tx4: {
     position: 'absolute',
@@ -90,7 +107,7 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     lineHeight: 16,
     letterSpacing: -0.3,
-    color: '#414141',
+    color: '#fff',
   },
   tx5: {
     position: 'absolute',
@@ -117,16 +134,23 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 264,
     height: 44,
-    left: 55,
     top: 500,
+    alignSelf: 'center',
     borderRadius: 10,
   },
   Btn2: {
-    borderRadius: 10,
+    borderRadius: 20,
     position: 'absolute',
+    alignSelf: 'center',
     width: 264,
     height: 44,
-    left: 55,
-    top: 580,
+    top: 290,
   },
+  
+  titleSignUp: {
+    color: '#3486eb',
+    fontSize: 25,
+    alignSelf: 'center',
+    fontWeight: 'bold',
+  }
 });

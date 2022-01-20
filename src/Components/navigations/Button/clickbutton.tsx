@@ -43,8 +43,7 @@ const RectangleButton: React.FC<IButton> = props => {
 const styles = StyleSheet.create({
   activeButton: {
     width: '70%',
-    height: windowHeight * 0.035,
-    backgroundColor: '#FC3B3B',
+    height: windowHeight * 0.05,
     flexDirection: 'column',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -53,8 +52,7 @@ const styles = StyleSheet.create({
   },
   inactiveButton: {
     width: '70%',
-    height: windowHeight * 0.035,
-    backgroundColor: '#8E8E8E',
+    height: windowHeight * 0.05,
     flexDirection: 'column',
     justifyContent: 'center',
     alignSelf: 'center',

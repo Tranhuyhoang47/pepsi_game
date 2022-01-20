@@ -12,9 +12,9 @@ const Stack = createStackNavigator();
 export const AuthencationNavigator: React.FC = () => {
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Sign_up" component={SignUp} options={{title: 'Sign Up'}}/>
-            <Stack.Screen name="Sign_in" component={SignIn} options={{title: 'Sign In'}}/>
-            <Stack.Screen name="Commit" component={commit} options={{title: 'Thể lệ chương trình'}}/>
+            <Stack.Screen name="Sign_up" component={SignUp}/>
+            <Stack.Screen name="Sign_in" component={SignIn}/>
+            <Stack.Screen name="Commit" component={commit}/>
             <Stack.Screen name="OtpNotification" component={OtpNotification}/>
         </Stack.Navigator>
     );

@@ -58,16 +58,16 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.05,
     width: '100%',
     backgroundColor: '#FFFFFF',
-    borderRadius: 10,
+    borderRadius: 5,
     flexDirection: 'column',
     justifyContent: 'center',
   },
   inputStyle: {
     color: 'black',
-    fontSize: 18,
+    fontSize: 16,
   },
   placeholderText: {
-    fontSize: 20,
+    fontSize: 18,
     color: '#877e7e',
   },
   errorText: {
