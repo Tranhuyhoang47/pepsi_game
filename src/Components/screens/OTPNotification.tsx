@@ -6,10 +6,12 @@ import {
   StyleSheet,
   Dimensions,
   Alert,
-  TextInput
+  TextInput,
+  ImageBackground
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import BtNotification from '../navigations/Button/bt';
+import {Button_white, Background,Button_off,} from '../../assets/images/index';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -47,7 +49,11 @@ const VerifyOtp: React.FC = (props: any) => {
   };
 
   return (
+  <ImageBackground source={Background}
+    style={styles.fullScreenContainer}
+  >
     <SafeAreaView style={styles.fullScreenContainer}>
+      
       <View style={styles.greetingContainer}>
         <Text style={styles.textWelcome}>{'Hey, chào mừng bạn đến với'}</Text>
         <Text style={styles.textTitle}>{'Pepsi Tết'}</Text>
@@ -60,7 +66,7 @@ const VerifyOtp: React.FC = (props: any) => {
         <KeyboardAwareScrollView>
           <View style={styles.otpContainer}>
             <TextInput
-              ref={passcode1Ref}
+               ={passcode1Ref}
               style={
                 wrongOtp
                   ? styles.passcodeContainerIncorrect
@@ -117,6 +123,7 @@ const VerifyOtp: React.FC = (props: any) => {
         </KeyboardAwareScrollView>
       </View>
     </SafeAreaView>
+      </ImageBackground>
   );
 };
 

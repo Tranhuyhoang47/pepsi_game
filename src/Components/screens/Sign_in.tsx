@@ -1,13 +1,19 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, Button, Alert, ImageBackground,StatusBar} from 'react-native';
-import {BUTTON_WHITE, SCREEN_SIGN, BUTTON_INACTIVE} from '../../../src/assets/images';
-import ClickButton from '../navigations/Button/clickbutton';
+import {View, Text, StyleSheet, TextInput, Button, Alert, ImageBackground,StatusBar,Dimensions} from 'react-native';
+import {Button_white, Background, Button_off} from '../../assets/images';
+import ClickButton from '../navigations/Button/clickbutton.signin';
+import ClickButton1 from '../navigations/Button/Clickbutton1';
+
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const SignIn: React.FC = (props: any) => {
   const [text, onChangeText] = React.useState('');
   const {navigation} = props;
   return (
     <ImageBackground
-           source={SCREEN_SIGN}
+           source={Background}
            resizeMode="cover"
            style={styles.imgbg}
            >
@@ -29,21 +35,21 @@ const SignIn: React.FC = (props: any) => {
       <Text style={styles.tx5}>Hoặc</Text>
       <View style={styles.Btn1}>
         <ImageBackground
-          source={BUTTON_INACTIVE}
+          source={Button_off}
+          style={styles.btnsgup}
         >
         <ClickButton
-          inactiveStyle={styles.Btn1}
           title="Lấy mã OTP"
-          onPress={() => Alert.alert('Cannot press this one')}
+          onPress={() => navigation.navigate('Home_screen')}
         />
         </ImageBackground>
-      </View>
+        </View>
       <View style={styles.Btn2}>
         <ImageBackground
-          source={BUTTON_WHITE}
+          source={Button_white}
           style={styles.Btn2}
         >
-        <ClickButton
+        <ClickButton1
           title="Đăng ký"
           titleStyle={styles.titleSignUp}
           onPress={() => navigation.navigate('Sign_up')}
@@ -125,32 +131,39 @@ const styles = StyleSheet.create({
     width: 340,
     height: 44,
     left: 17,
-    top: 304,
+    top: 310,
     borderRadius: 8,
     borderWidth: 1,
     backgroundColor: '#fff',
   },
   Btn1: {
+    borderRadius: 20,
     position: 'absolute',
-    width: 264,
-    height: 44,
-    top: 500,
     alignSelf: 'center',
-    borderRadius: 10,
+    width: 365,
+    height: 60,
+    top: 480,
   },
   Btn2: {
     borderRadius: 20,
     position: 'absolute',
     alignSelf: 'center',
-    width: 264,
-    height: 44,
+    width: 265,
+    height: 60,
     top: 290,
   },
   
   titleSignUp: {
     color: '#3486eb',
     fontSize: 25,
+    top:8,
     alignSelf: 'center',
     fontWeight: 'bold',
-  }
+  },
+  btnsgup: {
+    flex:1,
+    alignSelf: 'center',
+    height: 60,
+    width:265,
+  },
 });

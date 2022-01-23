@@ -7,28 +7,30 @@ import {
   Dimensions,
   Alert,
   ImageBackground,
+  TouchableOpacity
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import TextInputt from '../navigations/Inputt/inputt';
 import ClickButton from '../navigations/Button/clickbutton';
+import ClickButton1 from '../navigations/Button/Clickbutton1';
 import TextButton from '../navigations/Button/TxButton';
 import CheckBox from '@react-native-community/checkbox';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import {BUTTON_WHITE, SCREEN_SIGN,BUTTON_INACTIVE,} from '../../assets/images/index';
+import {Button_white, Background,Button_off,} from '../../assets/images/index';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const phoneRegExp =
+const phoneERR =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-const signInSchema = Yup.object({
+const signInErr = Yup.object({
   phoneNumber: Yup.string()
     .required('Please enter phone number!')
     .min(9, 'Phone number must have at least 9 digits.')
     .max(12, 'Phone number must have at least 12 digits.')
-    .matches(phoneRegExp, 'invalid phone number!'),
+    .matches(phoneERR, 'invalid phone number!'),
   userName: Yup.string()
     .min(2, 'Name must have at least 2 characters')
     .max(100, 'Name must be up to 100 characters')
@@ -37,10 +39,10 @@ const signInSchema = Yup.object({
 
 const SignUp: React.FC = (props: any) => {
   const {navigation} = props;
-  const [termRead, setTermRead] = useState(false);
+  const [Reader, setReader] = useState(false);
 
-  const isAllTrue = (isTermRead: boolean, formikValid: boolean) => {
-    if (isTermRead === true || formikValid === true) {
+  const AllTrue = (Readd: boolean, formikValid: boolean) => {
+    if (Readd === true || formikValid === true) {
       return true;
     }
     return false;
@@ -49,7 +51,7 @@ const SignUp: React.FC = (props: any) => {
   return (
     <View style={styles.fullScreenContainer}>
       <ImageBackground
-        source={SCREEN_SIGN}
+        source={Background}
         resizeMode="cover"
         style={styles.fullScreenContainer}>
         <View style={styles.greetingContainer}>
@@ -60,7 +62,7 @@ const SignUp: React.FC = (props: any) => {
           <Text style={styles.textFunction}>{'Đăng ký'}</Text>
           <Formik
             initialValues={{phoneNumber: '', userName: ''}}
-            validationSchema={signInSchema}
+            validationSchema={signInErr}
             onSubmit={values => {
               // Alert.alert(
               //   `You signed up with information: ${values.phoneNumber} and ${values.userName}`,
@@ -92,8 +94,8 @@ const SignUp: React.FC = (props: any) => {
                 />
                 <View style={styles.checkboxContainer}>
                   <CheckBox
-                    value={termRead}
-                    onValueChange={() => setTermRead(!termRead)}
+                    value={Reader}
+                    onValueChange={() => setReader(!Reader)}
                     boxType={'square'}
                     onFillColor={'white'}
                   />
@@ -106,25 +108,19 @@ const SignUp: React.FC = (props: any) => {
                   />
                   <Text style={styles.checkboxText}>{'Pepsi Tết'}</Text>
                 </View>
-                <View
-                    style={styles.btnsgup}
-                    >
-                  <ImageBackground source={BUTTON_INACTIVE}
-                    style={styles.btnsgup}
-                  >
+                
                 <ClickButton
                   onPress={formik.submitForm}
                   title="Lấy mã OTP"
-                  disabled={isAllTrue(!termRead, !formik.isValid)}
+                  activeStyle={styles.buttonSignUp}
+                  disabled={AllTrue(!Reader, !formik.isValid)}
                 />
-                </ImageBackground>
-                </View>
                 <Text style={styles.textOr}>{'Hoặc'}</Text>
                 <View style={styles.btnsgup}>
-                  <ImageBackground source={BUTTON_WHITE}
+                  <ImageBackground source={Button_white}
                     style={styles.btnsgup}
                   >
-                <ClickButton
+                <ClickButton1
                   title="Đăng nhập"
                   titleStyle={styles.titleSignUp}
                   activeStyle={styles.buttonSignUp}
@@ -181,17 +177,18 @@ const styles = StyleSheet.create({
   },
   buttonSignUp: {
     width: '70%',
-    height: windowHeight * 0.08,
+    height: windowHeight * 0.09,
     flexDirection: 'column',
     justifyContent: 'center',
     alignSelf: 'center',
-    marginVertical: windowHeight * 0.0001,
+    marginVertical: windowHeight * 0.01,
   },
   titleSignUp: {
     color: '#3486eb',
     fontSize: 25,
     alignSelf: 'center',
     fontWeight: 'bold',
+    top:8,
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -199,6 +196,12 @@ const styles = StyleSheet.create({
   checkboxText: {
     fontSize: 12,
     color: 'white',
+  },
+  btnsgup2: {
+    flex:1,
+    alignSelf: 'center',
+    height: 73,
+    width:305,
   },
   btnsgup: {
     flex:1,

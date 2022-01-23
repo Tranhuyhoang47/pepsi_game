@@ -27,33 +27,23 @@ export interface CLButton {
   backgroundImage?: any;
 }
 
-const ClickButton: React.FC<CLButton> = props => {
-  const {activeStyle,inactiveStyle,disabled,onPress,title,titleStyle,subComponent,backgroundImage,} = props;
+const ClickButton1: React.FC<CLButton> = props => {
+  const {activeStyle,inactiveStyle,disabled,onPress,title,titleStyle,subComponent,backgroundImage} = props;
 
   return (
-    <View style={styles.container}>
-      <ImageBackground source={disabled ? Button_off : backgroundImage ? backgroundImage : Button_red}
-         style={
-          disabled
-            ? [styles.inactiveButton, inactiveStyle]
-            : [styles.activeButton, activeStyle]}
-      >
+      
     <TouchableOpacity onPress={onPress} disabled={disabled}>
           <Text style={titleStyle ? titleStyle : styles.title}>{title}</Text>
           {subComponent}
         </TouchableOpacity>
-    </ImageBackground>
-    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-  },
+    
   activeButton: {
-    width: '100%',
-    height: windowHeight * 0.09,
+    width: '70%',
+    height: windowHeight * 0.08,
     flexDirection: 'column',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -62,7 +52,7 @@ const styles = StyleSheet.create({
   },
   inactiveButton: {
     width: '70%',
-    height: windowHeight * 0.09,
+    height: windowHeight * 0.08,
     flexDirection: 'column',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -76,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ClickButton;
+export default ClickButton1;
