@@ -51,12 +51,12 @@ const Home_Screens: React.FC = (props: any) => {
 
   const navigateToGame = (playType: string) => {
     dispatch(setPlay(playType));
-    navigation.navigate('Game');
+    navigation.navigate('');
     setPtsModalVisible(!ptsModalVisible);
   };
 
   const navigateToScanCode = () => {
-    navigation.navigate('Scan code');
+    navigation.navigate('');
     setOptModalVisible(!optModalVisible);
   };
 
@@ -102,7 +102,7 @@ const Home_Screens: React.FC = (props: any) => {
               title={'Quét mã'}
               activeStyle={styles.buttonWhite}
               titleStyle={styles.textButton}
-              onPress={() => navigation.navigate('Scan code')}
+              onPress={() => navigation.navigate('')}
               backgroundImage={Button_white}
             />
             <ClickButton
@@ -130,8 +130,8 @@ const Home_Screens: React.FC = (props: any) => {
             visible={ptsModalVisible}
             onClose={() => setPtsModalVisible(!ptsModalVisible)}
             data={{playTimesFree, playTimesExchange}}
-            onPressFirst={() => navigateToGame('free')}
-            onPressSecond={() => navigateToGame('exchange')}
+            onPressFirst={() => navigateToGame('')}
+            onPressSecond={() => navigateToGame('')}
           />
           <EndOfPlay
             visible={optModalVisible}
